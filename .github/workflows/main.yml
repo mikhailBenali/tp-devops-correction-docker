@@ -74,6 +74,9 @@ jobs:
   sonarcloud-check:
     runs-on: ubuntu-24.04
     steps:
+      #checkout your github code using actions/checkout@v4
+      - uses: actions/checkout@v4
+      
       - name: Run SonarCloud analysis
         # lancer maven, compilation, test et vérification du projet, lancement de l'analyse de Sonar
         run: mvn -B verify sonar:sonar 
