@@ -81,4 +81,4 @@ jobs:
          -Dsonar.organization=mikhailbenali 
          -Dsonar.host.url=https://sonarcloud.io 
          -Dsonar.login=${{ secrets.SONAR_TOKEN }}  
-         --file simple-api/pom.xml
+         --file ./simple-api/pom.xml
