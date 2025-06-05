@@ -1,0 +1,24 @@
+name: CD DevOps Ansible 2025
+
+on:
+  workflow_run:
+    workflows: ["CI Devops 2025"]
+    types:
+      - completed
+
+jobs:
+  play-ansible-playbook:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Play Ansible Playbook
+        uses: arillso/action.playbook@0.0.8
+        with:
+          # Name of the inventory file in your workspace.
+          inventory: TP3/ansible/inventories/setup.yml
+          # Name of the playbook in your workspace.
+          playbook: TP3/ansible/playbook.yml
+          # Run operations with become.
+          become: true
