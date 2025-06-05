@@ -27,10 +27,10 @@ jobs:
       - name: Run Ansible playbook
         uses: dawidd6/action-ansible-playbook@v3
         with:
-          # Ansible playbook filepath
-          playbook: TP3/ansible/playbook.yml
           # Root directory of Ansible project (defaults to current)
-          #directory: TP3/ansible
+          directory: ./TP3/ansible
+          # Ansible playbook filepath
+          playbook: ./playbook.yml
           # Custom content to write into hosts
-          inventory: TP3/ansible
+          inventory: ./inventories/setup.yml
                 
