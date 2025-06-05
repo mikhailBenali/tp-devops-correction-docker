@@ -21,15 +21,16 @@ jobs:
       - name: Install Ansible and Docker SDK
         run: |
           python -m pip install --upgrade pip
-          pip install ansible-core==2.14
-          pip install docker  # Install Docker SDK for Python if needed
+          pip install ansible
+          pip install docker
 
-      - name: Install Ansible Collections
-        run: |
-          ansible-galaxy collection install community.docker
-
-      - name: Run Ansible Playbook
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: False
-        run: |
-          ansible-playbook -i TP3/ansible/inventories/setup.yml TP3/ansible/playbook.yml --become
+      - name: Run Ansible playbook
+        uses: dawidd6/action-ansible-playbook@v3
+        with:
+          # Ansible playbook filepath
+          playbook: TP3/ansible/playbook.yml
+          # Root directory of Ansible project (defaults to current)
+          #directory: TP3/ansible
+          # Custom content to write into hosts
+          inventory: TP3/ansible
+                
