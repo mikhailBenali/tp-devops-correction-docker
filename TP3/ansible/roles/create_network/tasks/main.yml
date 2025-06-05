@@ -1,0 +1,19 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/network
+
+- name: Créer réseau pour frontend (httpd) et backend
+  docker_network:
+    name: frontend_backend_network
+    state: present
+    driver: bridge
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+- name: Créer réseau pour backend et database
+  docker_network:
+    name: backend_database_network
+    state: present
+    driver: bridge
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

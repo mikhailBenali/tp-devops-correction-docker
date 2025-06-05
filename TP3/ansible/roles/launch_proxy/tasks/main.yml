@@ -1,0 +1,14 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/proxy
+
+- name: Lancer le conteneur httpd
+  docker_container:
+    name: httpd
+    image: mikhailbenali/tp-devops-http-server
+    state: started
+    restart_policy: always
+    networks:
+      - name: frontend_backend_network
+    published_ports:
+      - "80:80"

@@ -1,0 +1,16 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/database
+
+- name: Lancer le conteneur de la database
+  docker_container:
+    name: database
+    image: mikhailbenali/tp-devops-database
+    state: started
+    restart_policy: always
+    env:
+      POSTGRES_PASSWORD: "{{ POSTGRES_PASSWORD }}"
+    volumes:
+      - pg-db-data:/var/lib/postgresql/data
+    networks:
+      - name: backend_database_network

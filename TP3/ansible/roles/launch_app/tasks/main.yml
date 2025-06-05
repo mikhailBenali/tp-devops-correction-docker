@@ -1,0 +1,16 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/app
+
+- name: Lancer le conteneur simple-api
+  docker_container:
+    name: simple-api
+    image: mikhailbenali/tp-devops-simple-api
+    state: started
+    restart_policy: always
+    networks:
+      - name: backend_database_network
+      - name: frontend_backend_network
+    env:
+      DATABASE_HOST: "{{DATABASE_HOST}}"
+      DATABASE_PASSWORD: "{{DATABASE_PASSWORD}}"
