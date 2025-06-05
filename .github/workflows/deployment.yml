@@ -39,4 +39,6 @@ jobs:
           playbook: ./playbook.yml
           # Custom content to write into hosts
           inventory: ./inventories/setup.yml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: False
                 
