@@ -35,4 +35,5 @@ jobs:
       env:
         ANSIBLE_HOST_KEY_CHECKING: False
       run: |
-        ansible-playbook -i inventory_file path/to/your/playbook.yml
+        cd TP3/ansible
+        ansible-playbook -i inventories/setup.yml playbook.yml
