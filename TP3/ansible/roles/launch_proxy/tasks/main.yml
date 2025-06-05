@@ -6,6 +6,7 @@
   docker_container:
     name: httpd
     image: mikhailbenali/tp-devops-http-server
+    pull: true
     state: started
     restart_policy: always
     networks:
