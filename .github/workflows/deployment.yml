@@ -16,20 +16,20 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.12'  # Specify a version known to work well
 
-      - name: Install Ansible
+      - name: Install Ansible and Docker SDK
         run: |
           python -m pip install --upgrade pip
-          pip install ansible
+          pip install ansible-core==2.14
+          pip install docker  # Install Docker SDK for Python if needed
 
       - name: Install Ansible Collections
         run: |
           ansible-galaxy collection install community.docker
 
-      - name: Play Ansible Playbook
-        uses: arillso/action.playbook@0.0.8
-        with:
-          inventory: TP3/ansible/inventories/setup.yml
-          playbook: TP3/ansible/playbook.yml
-          become: true
+      - name: Run Ansible Playbook
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: False
+        run: |
+          ansible-playbook -i TP3/ansible/inventories/setup.yml TP3/ansible/playbook.yml --become
