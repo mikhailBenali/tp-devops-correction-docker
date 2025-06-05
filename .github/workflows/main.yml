@@ -77,9 +77,9 @@ jobs:
       - name: Run SonarCloud analysis
         # lancer maven, compilation, test et vérification du projet, lancement de l'analyse de Sonar
         run: mvn -B verify sonar:sonar 
-         -Dsonar.projectKey=MaxenceKamionka_DevOps_MaxenceKAMIONKA 
-         -Dsonar.organization=maxencekamionka 
+         -Dsonar.projectKey=mikhailBenali_tp-devops-correction-docker 
+         -Dsonar.organization=mikhailbenali 
          -Dsonar.host.url=https://sonarcloud.io 
          -Dsonar.login=${{ secrets.SONAR_TOKEN }}  
-         --file ../../TP2/simple-api/pom.xml
-        working-directory: TP2/simple-api
+         --file ../../simple-api/pom.xml
+        working-directory: simple-api
